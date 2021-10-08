@@ -1,0 +1,84 @@
+//parking sensor
+
+#include<LiquidCrystal.h>
+LiquidCrystal lcd (1,2,4,5,6,7); //YellowWire (rs,enable,DB4,DB5,DB6,DB7)
+const int trigpin1 = A0; //GreenWire
+const int trigpin2 = A2; //GreenWire
+const int echopin1 = A1; //PinkWire
+const int echopin2 = A3; //PinkWire
+
+int buzz = 13; //RedWire
+long duration1,duration2 ;
+int distancecm1,distancecm2 ;
+void setup(){
+  lcd.begin(16,2);
+  pinMode(trigpin1,OUTPUT);
+  pinMode(trigpin2,OUTPUT);
+  pinMode(echopin1,INPUT);
+  pinMode(echopin2,INPUT);
+}
+void loop () {
+  digitalWrite(trigpin1,LOW);
+  digitalWrite(trigpin2,LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigpin1,HIGH);
+  digitalWrite(trigpin2,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigpin1,LOW);
+  digitalWrite(trigpin2,LOW);
+   duration1 = pulseIn(echopin1,HIGH);
+   duration2 = pulseIn(echopin2,HIGH);
+
+
+   distancecm1 =(duration1/2)*0.0343;
+   distancecm2 =(duration2/2)*0.0343;
+   
+  if (distancecm1<= 15)
+   {
+     tone (buzz,1500);
+     delay (100);
+     noTone(buzz);
+     delay(100);
+
+   }
+  else if (distancecm2 <=15)
+{ 
+  tone(buzz,1500);
+  delay (100);
+  noTone(buzz);
+  delay (100);
+
+}
+  else if (distancecm1 <=20)
+{
+  tone(buzz,1000);
+  delay (100);
+  noTone(buzz);
+  delay (100);
+  
+}
+  else if (distancecm2 <=20)
+{
+  tone(buzz,1000);
+  delay (100);
+  noTone(buzz);
+  delay (100);
+  
+}
+  else
+{
+  digitalWrite(buzz,LOW);
+  
+}
+lcd.setCursor(0,0);
+lcd.print("Front: ");
+lcd.print(distancecm1);
+lcd.print("cm");
+delay(10);
+lcd.setCursor(0,1);
+lcd.print("Rear: ");
+lcd.print(distancecm2);
+lcd.print("cm");
+delay(10);
+
+}

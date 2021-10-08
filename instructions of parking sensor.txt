@@ -1,0 +1,20 @@
+This is a simple code for Arduino UNO board. This is use to  control one lcd (16X2) & two ultrasonic Sensor(hc-sr04).
+Parts Required:
+Arduino Uno Board
+1* lcd (16X2)
+2* Ultrasonic Sensor (hc-sr04)
+1* Buzzzer
+1* potentiometer
+1* resistor
+INSTRUCTION:
+First you need to connect  Lcd pins(rs,enable,DB4,DB5,DB6,DB7) to arduino Board pin (1,2,4,5,6,7). These Wire are yellow in colour in wirring diagram
+Then connect potentiometer to contrast pin of LCD.
+Then connect resistor to  anode pin of LCD.
+Then take first  ultrasonic and connect trigpin1 to arduino pin A0 and echopin1 to arduino pin A1.
+Then take second ultrasonic and connect trigpin2 to arduino pin A2 and echopin2 to arduino pin A3.
+Then connect vcc pin of both ultrasonic sensor to 5 v of board.
+Then connect GND pin of both ultasonic sensor to gnd pin of board.
+Then connect buzzer positive to pin 13 of UNO board.
+And then Upload the code.
+I havent upload it to any board but when I check it on TinkerCad simulation it just work fine.
+This is only for educational purpose not for commercial purposes . IF YOU USE IT YOU HAVE TO PAY FOR IT.
